@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { Plus, Users, Target, TrendingUp, LogOut, Menu, User, MapPin } from "lucide-react"
+import { Plus, Users, Target, TrendingUp, LogOut, Menu, User, MapPin, Plane, Hotel } from "lucide-react"
 import { useAuth } from "@/lib/auth-context"
 import { useRouter } from "next/navigation"
 import { NotificationBell } from "@/lib/notification-context"
@@ -84,6 +84,18 @@ export default function DashboardPage() {
           </div>
           <div className="flex items-center gap-4">
             <NotificationBell />
+            <Link href="/book-transport">
+              <Button variant="ghost" className="text-foreground hover:text-primary">
+                <Plane className="w-5 h-5 mr-2" />
+                Transport
+              </Button>
+            </Link>
+            <Link href="/book-hotel">
+              <Button variant="ghost" className="text-foreground hover:text-primary">
+                <Hotel className="w-5 h-5 mr-2" />
+                Hotels
+              </Button>
+            </Link>
             <Link href="/profile">
               <Button variant="ghost" className="text-foreground hover:text-primary">
                 <User className="w-5 h-5 mr-2" />
@@ -123,6 +135,66 @@ export default function DashboardPage() {
               </Card>
             )
           })}
+        </div>
+
+        {/* Main Action Cards */}
+        <div className="mb-10">
+          <h3 className="text-2xl font-bold text-foreground mb-6">What would you like to do?</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Create Circle Card */}
+            <Link href="/create-circle">
+              <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary cursor-pointer h-full">
+                <div className="text-center">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Users className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">Create Circle</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Start a savings circle with friends and save together for your dream vacation
+                  </p>
+                  <Button className="bg-primary hover:bg-primary/90 text-white w-full">
+                    Create New Circle
+                  </Button>
+                </div>
+              </Card>
+            </Link>
+
+            {/* Travel Booking Card */}
+            <Link href="/book-transport">
+              <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary cursor-pointer h-full">
+                <div className="text-center">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Plane className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">Book Transport</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Book trains, buses, or flights to India's top tourist destinations
+                  </p>
+                  <Button className="bg-primary hover:bg-primary/90 text-white w-full">
+                    Search Transport
+                  </Button>
+                </div>
+              </Card>
+            </Link>
+
+            {/* Hotel Booking Card */}
+            <Link href="/book-hotel">
+              <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary cursor-pointer h-full">
+                <div className="text-center">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Hotel className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">Book Hotel</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Find and book hotels at top destinations with 10-12 options per city
+                  </p>
+                  <Button className="bg-primary hover:bg-primary/90 text-white w-full">
+                    Search Hotels
+                  </Button>
+                </div>
+              </Card>
+            </Link>
+          </div>
         </div>
 
         {/* Circles Section */}
@@ -189,32 +261,6 @@ export default function DashboardPage() {
             })}
           </div>
         </div>
-
-        {/* Quick Actions */}
-        <Card className="p-8 bg-gradient-to-r from-primary/10 to-secondary/10 border-0">
-          <h3 className="text-2xl font-bold text-foreground mb-4">Getting Started?</h3>
-          <p className="text-muted-foreground mb-6">
-            Start your first savings circle and invite friends to join you on an unforgettable journey.
-          </p>
-          <div className="flex gap-4 flex-wrap">
-            <Link href="/travel-goals">
-              <Button className="bg-primary hover:bg-primary/90 text-white px-6">
-                <MapPin className="w-4 h-4 mr-2" />
-                Explore Destinations
-              </Button>
-            </Link>
-            <Link href="/create-circle">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 px-6 bg-transparent">
-                Create Circle
-              </Button>
-            </Link>
-            <Link href="/join-circle">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/5 px-6 bg-transparent">
-                Join Existing Circle
-              </Button>
-            </Link>
-          </div>
-        </Card>
       </div>
     </div>
   )
