@@ -49,9 +49,10 @@ export default function CreateCirclePage() {
     setLoading(true)
     
     // Create circle data
+    const circleId = Date.now().toString()
     const circleData = {
       ...formData,
-      id: Date.now().toString(),
+      id: circleId,
       createdBy: '1', // Current user ID
       createdAt: new Date().toISOString(),
       contributionAmount: calculateContribution(),
@@ -69,11 +70,17 @@ export default function CreateCirclePage() {
       ]
     }
     
+    // Save circle data to localStorage for demo
+    const circles = JSON.parse(localStorage.getItem('circles') || '[]')
+    circles.push(circleData)
+    localStorage.setItem('circles', JSON.stringify(circles))
+    
     console.log('Creating circle:', circleData)
     
     setTimeout(() => {
       setLoading(false)
-      window.location.href = "/dashboard"
+      // Redirect to the newly created circle's detail page
+      window.location.href = `/circle/${circleId}`
     }, 1500)
   }
 

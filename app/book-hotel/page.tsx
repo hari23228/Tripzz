@@ -36,7 +36,26 @@ export default function BookHotelPage() {
   const handleBooking = (hotel: Hotel) => {
     const destinationData = TOURIST_DESTINATIONS.find(d => d.id === destination)
     
-    alert(`Hotel booking confirmed!\n\nHotel: ${hotel.name}\nLocation: ${hotel.location}\nCheck-in: ${checkIn ? format(checkIn, "PPP") : ""}\nCheck-out: ${checkOut ? format(checkOut, "PPP") : ""}\nGuests: ${guests}\n\nYou'll receive confirmation via email.`)
+    if (!checkIn || !checkOut) {
+      alert("Please select check-in and check-out dates")
+      return
+    }
+
+    // Calculate number of nights
+    const nights = Math.ceil((checkOut.getTime() - checkIn.getTime()) / (1000 * 60 * 60 * 24))
+    
+    const bookingData = {
+      hotel,
+      destination: destinationData,
+      checkIn: checkIn.toISOString(),
+      checkOut: checkOut.toISOString(),
+      guests: parseInt(guests),
+      nights,
+      bookedAt: new Date().toISOString(),
+    }
+    
+    sessionStorage.setItem("hotelBookingData", JSON.stringify(bookingData))
+    window.location.href = "/booking-confirmation"
   }
 
   const getAmenityIcon = (amenity: string) => {

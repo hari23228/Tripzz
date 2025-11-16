@@ -36,12 +36,6 @@ export default function Home() {
             <span className="font-bold text-lg text-foreground">TravelCircle</span>
           </div>
           <div className="flex gap-4">
-            <Link href="/book-transport">
-              <Button variant="ghost" className="text-foreground hover:text-primary">
-                <MapPin className="w-4 h-4 mr-2" />
-                Book Transport
-              </Button>
-            </Link>
             <Link href="/login">
               <Button variant="outline" className="text-foreground hover:text-primary">
                 Login
@@ -62,76 +56,57 @@ export default function Home() {
             <span className="text-primary"> Travel Together</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Create savings circles with friends or book your next adventure to India's top destinations
+            Join a circle of friends to save money together for your dream vacation. Track progress, earn rewards, and travel together!
           </p>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Link href="/signup">
+              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg">
+                Get Started Free
+              </Button>
+            </Link>
+            <Button
+              variant="outline"
+              onClick={scrollToFeatures}
+              className="px-8 py-4 text-lg border-primary text-primary hover:bg-primary/5"
+            >
+              Learn More
+            </Button>
+          </div>
         </div>
+      </section>
 
-        {/* Main Options Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8">
-          {/* Create Circle Card */}
-          <Link href="/create-circle">
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary cursor-pointer h-full">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Users className="w-10 h-10 text-primary" />
-                </div>
-                <h2 className="text-3xl font-bold mb-4 text-foreground">Create Circle</h2>
-                <p className="text-muted-foreground mb-6">
-                  Start a savings circle with friends and family. Save together for your dream vacation and reach your goals faster.
-                </p>
-                <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg w-full">
-                  Go to Circle Dashboard
-                </Button>
-              </div>
-            </Card>
-          </Link>
+      {/* Key Features Showcase */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Card className="p-8 text-center hover:shadow-xl transition-all duration-300 border-2 hover:border-primary bg-gradient-to-br from-white to-primary/5">
+            <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Users className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold mb-3 text-foreground">Group Savings Made Easy</h3>
+            <p className="text-muted-foreground">
+              Create or join savings circles with friends. Pool funds together and reach your travel goals faster with shared contributions.
+            </p>
+          </Card>
 
-          {/* Travel Booking Card */}
-          <Link href="/book-transport">
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary cursor-pointer h-full">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Plane className="w-10 h-10 text-primary" />
-                </div>
-                <h2 className="text-3xl font-bold mb-4 text-foreground">Travel Booking</h2>
-                <p className="text-muted-foreground mb-6">
-                  Book trains, buses, or flights to India's top 10 tourist destinations. Quick, easy, and convenient booking.
-                </p>
-                <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg w-full">
-                  Go to Booking Dashboard
-                </Button>
-              </div>
-            </Card>
-          </Link>
+          <Card className="p-8 text-center hover:shadow-xl transition-all duration-300 border-2 hover:border-primary bg-gradient-to-br from-white to-primary/5">
+            <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <TrendingUp className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold mb-3 text-foreground">Track Every Milestone</h3>
+            <p className="text-muted-foreground">
+              Real-time progress tracking, automated reminders, and milestone celebrations keep everyone motivated on the journey.
+            </p>
+          </Card>
 
-          {/* Hotel Booking Card */}
-          <Link href="/book-hotel">
-            <Card className="p-8 hover:shadow-2xl transition-all duration-300 border-2 border-transparent hover:border-primary cursor-pointer h-full">
-              <div className="text-center">
-                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Hotel className="w-10 h-10 text-primary" />
-                </div>
-                <h2 className="text-3xl font-bold mb-4 text-foreground">Hotel Booking</h2>
-                <p className="text-muted-foreground mb-6">
-                  Find and book hotels at top destinations. Choose from 10-12 options per city with great prices and amenities.
-                </p>
-                <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg w-full">
-                  Search Hotels
-                </Button>
-              </div>
-            </Card>
-          </Link>
-        </div>
-
-        {/* Learn More Button */}
-        <div className="text-center">
-          <Button
-            variant="outline"
-            onClick={scrollToFeatures}
-            className="px-8 py-3 text-lg rounded-full border-foreground/20 text-foreground hover:bg-foreground/5"
-          >
-            Learn More About How It Works
-          </Button>
+          <Card className="p-8 text-center hover:shadow-xl transition-all duration-300 border-2 hover:border-primary bg-gradient-to-br from-white to-primary/5">
+            <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Plane className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-xl font-bold mb-3 text-foreground">Book & Travel Together</h3>
+            <p className="text-muted-foreground">
+              Once you hit your goal, easily book flights, hotels, and transport for your group adventure - all in one place.
+            </p>
+          </Card>
         </div>
       </section>
 
